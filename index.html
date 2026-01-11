@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Supplements</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #FF6B35;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --text: #2a2a2a;
+            --text-secondary: #666;
+            --border: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .intro h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .intro p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .supplements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .supplement-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .supplement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #ff8c5a);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .supplement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .supplement-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .supplement-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .supplement-brand {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .supplement-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .supplement-options {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .buy-link {
+            display: inline-block;
+            padding: 0.9rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .buy-link:hover {
+            background: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .buy-link.secondary {
+            background: #666;
+        }
+
+        .buy-link.secondary:hover {
+            background: var(--accent);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .supplements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Supplement Recommendations</h1>
+        <p class="subtitle">High-quality, affordable supplements to support your fitness goals</p>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <h2>About These Recommendations</h2>
+            <p>These are supplements I recommend to my clients. I prioritize Nutricost for most products because they're affordable, transparent about ingredients, and consistently high-quality. Click any link below to purchase directly.</p>
+        </div>
+
+        <div class="supplements-grid">
+            <!-- Creatine -->
+            <div class="supplement-card">
+                <div class="category-badge">Performance</div>
+                <h3 class="supplement-name">Creatine Monohydrate</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">Available in powder or capsule form. Essential for strength and muscle building. 5g serving provides optimal dosage.</p>
+                <div class="supplement-options">
+                    <p class="option-label">Powder Form:</p>
+                </div>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-creatine-monohydrate-powder-500-grams" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Creatine-Monohydrate-Micronized-Powder/dp/B00GL2HMES" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+                <div class="supplement-options" style="margin-top: 1rem;">
+                    <p class="option-label">Capsule Form:</p>
+                </div>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-creatine-monohydrate-750mg-500-capsules" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Creatine-Monohydrate-Micronized-Powder/dp/B00GL2HMES" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Magnesium Glycinate -->
+            <div class="supplement-card">
+                <div class="category-badge">Sleep & Recovery</div>
+                <h3 class="supplement-name">Magnesium Glycinate (Extra Strength)</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">420mg per serving for better value. Supports better sleep quality and muscle recovery. Highly absorbable form of magnesium.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-magnesium-extra-strength" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Magnesium-Glycinate-420mg-Capsules/dp/B08VW9496D" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Protein Powder -->
+            <div class="supplement-card">
+                <div class="category-badge">Nutrition</div>
+                <h3 class="supplement-name">Loaded Protein</h3>
+                <span class="supplement-brand">Ryse</span>
+                <p class="supplement-description">High-quality whey protein with 25g per serving. Great taste and mixability. Choose from multiple flavors.</p>
+                <div class="links">
+                    <a href="https://rysesupps.com/collections/protein" class="buy-link" target="_blank">Buy from Ryse</a>
+                    <a href="https://www.amazon.com/stores/RYSE/page/8C140308-4D29-4C1B-846B-B9F68E21FBEE" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Omega-3 -->
+            <div class="supplement-card">
+                <div class="category-badge">Health & Wellness</div>
+                <h3 class="supplement-name">Omega-3 Fish Oil</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">Essential fatty acids for heart, brain, and joint health. High EPA/DHA content from wild-caught fish.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-omega-3-softgels" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Omega-Fish-Oil-Triple-Strength/dp/B098KLWZHN" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Nitric Oxide -->
+            <div class="supplement-card">
+                <div class="category-badge">Pre-Workout</div>
+                <h3 class="supplement-name">Nitric Oxide Booster</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">L-Arginine and L-Citrulline blend for enhanced blood flow and workout pumps. Easy-to-take capsules.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-nitric-oxide-booster-capsules" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Nitric-Oxide-Booster-Capsules/dp/B09B4DWNYQ" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Caffeine -->
+            <div class="supplement-card">
+                <div class="category-badge">Energy</div>
+                <h3 class="supplement-name">Caffeine Pills</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">200mg per capsule. Cost-effective pre-workout alternative. No calories or sugar.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-caffeine-200mg" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Caffeine-Capsules-200mg-Capsule/dp/B01DFQSVK6" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Beetroot -->
+            <div class="supplement-card">
+                <div class="category-badge">Performance</div>
+                <h3 class="supplement-name">Organic Beet Root Powder</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">USDA certified organic. Supports nitric oxide production and endurance. Natural energy boost.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-organic-beet-root-powder-1lb" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Organic-Beet-Root-Powder/dp/B08K3LZ4KL" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Ashwagandha -->
+            <div class="supplement-card">
+                <div class="category-badge">Stress Management</div>
+                <h3 class="supplement-name">Ashwagandha</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">600mg per capsule. Helps manage stress and cortisol levels. Supports mental clarity and recovery.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-ashwagandha-root-600mg-120-capsules" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Ashwagandha-Herbal-Supplement-Capsules/dp/B073DN2YG9" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Multivitamin -->
+            <div class="supplement-card">
+                <div class="category-badge">Foundation</div>
+                <h3 class="supplement-name">Multivitamin</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">Complete daily vitamins and minerals. Includes probiotics for gut health. Vegetarian capsules.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-multivitamin-120-capsules" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Multivitamin-120-Veggie-Capsules/dp/B01JQBKJ72" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Glycine -->
+            <div class="supplement-card">
+                <div class="category-badge">Oxidative Stress</div>
+                <h3 class="supplement-name">Glycine</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">Essential amino acid supporting glutathione production. Helps with sleep, joint health, and cellular protection. Available as powder or capsules.</p>
+                <div class="supplement-options">
+                    <p class="option-label">Powder Form:</p>
+                </div>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-glycine-powder" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Glycine-Powder-1lb-Non-GMO/dp/B09F83CPX8" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+                <div class="supplement-options" style="margin-top: 1rem;">
+                    <p class="option-label">Capsule Form (1000mg):</p>
+                </div>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-l-glycine" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-L-Glycine-Capsules-Vegetarian-Non-GMO/dp/B0BC272T1W" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- NAC -->
+            <div class="supplement-card">
+                <div class="category-badge">Oxidative Stress</div>
+                <h3 class="supplement-name">NAC (N-Acetyl Cysteine)</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">Powerful antioxidant precursor to glutathione. Supports liver detox, respiratory health, and cellular defense. 600mg per capsule.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-n-acetyl-l-cysteine-nac-600mg" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-N-Acetyl-L-Cysteine-600mg-Capsules/dp/B01CUQFKW4" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- NAC + Glycine Combo -->
+            <div class="supplement-card">
+                <div class="category-badge">Oxidative Stress</div>
+                <h3 class="supplement-name">NAC + Glycine Combo</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">Synergistic blend of 2000mg NAC + 2000mg Glycine per serving. Powerful oxidative stress support in one convenient powder.</p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-nac-glycine-powder" class="buy-link" target="_blank">Buy from Nutricost</a>
+                </div>
+            </div>
+
+            <!-- NMN -->
+            <div class="supplement-card">
+                <div class="category-badge">Oxidative Stress</div>
+                <h3 class="supplement-name">NMN (NAD+ Precursor)</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">500mg per serving. Supports cellular energy and NAD+ levels. <em>Note: Oral bioavailability is debated; research is ongoing.</em></p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-nmn" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Nicotinamide-Mononucleotide-500mg-Capsules/dp/B09HL4JDQZ" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Electrolyte Pills -->
+            <div class="supplement-card">
+                <div class="category-badge">Hydration</div>
+                <h3 class="supplement-name">Electrolyte Complex (Pills)</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">8 hydrating electrolytes & vitamins in convenient capsules. 120 servings. <strong>Best value option for daily hydration.</strong></p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/nutricost-electrolyte-8-hydrating-electrolytes-vitamins-120-cap" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Electrolyte-Advanced-Hydration-Capsules/dp/B09NS38Q41" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+
+            <!-- Electrolyte Packets -->
+            <div class="supplement-card">
+                <div class="category-badge">Hydration</div>
+                <h3 class="supplement-name">Electrolyte Packets (40 Count)</h3>
+                <span class="supplement-brand">Nutricost</span>
+                <p class="supplement-description">Convenient stick packs with multiple flavor options. Great for taste variety and on-the-go. <em>Pills offer better value for daily use.</em></p>
+                <div class="links">
+                    <a href="https://nutricost.com/products/hydration-stick-packs-40-pack" class="buy-link" target="_blank">Buy from Nutricost</a>
+                    <a href="https://www.amazon.com/Nutricost-Electrolytes-Complex-Flavored-Stickpacks/dp/B0DBXVC5FV" class="buy-link secondary" target="_blank">Buy from Amazon</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Note:</strong> These supplements are recommendations based on quality and value. Always consult with a healthcare professional before starting any new supplement regimen.</p>
+            <p style="margin-top: 1.5rem; font-size: 1rem;"><strong>Questions? Contact Sam at <a href="tel:346-317-2808" style="color: var(--accent); text-decoration: none;">346-317-2808</a></strong></p>
+        </div>
+    </div>
+</body>
+</html>
